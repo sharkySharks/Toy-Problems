@@ -20,40 +20,28 @@ Output:
    Need to store position of braces to reference incorrect balance position
 */
 
-function check_anagrams(first_words, second_words) {
-    var results = {}, final = 1, fResult = [];
+function check_braces(expressions) {
+    var outers = 0, fResults = [];
     
-    for (var i = 0; i < first_words.length; i++){
-        
-        for (var j = 0; j < first_words[i].length; j++){
-            if( !results.hasOwnProperty(first_words[i][j]) ){
-                results[first_words[i][j]] = 1;
+    for (var i = 0; i < expressions.length; i++){
+        for (var j = 0; j < expressions[i].length; j++){
+            if( expressions[i][j] === ")" || expressions[i][j] === "}" || expressions[i][j] === "]" ){
+                outers+=1;
             } else {
-                results[first_words[i][j]] += 1;
+                outers-=1;
             }
         }
         
-        for (var k = 0; k < second_words[i].length; k++){
-            if( !results.hasOwnProperty(second_words[i][k]) ){
-                results[second_words[i][k]] = 1;
-            } else {
-                results[second_words[i][k]] += 1;
-            }
+        if(outers < 0 || outers % 2 !==0){
+            fResults.push(0);
+        } else {
+            fResults.push(1);
         }
-        
-        for (var prop in results){
-            if(results[prop] % 2 !== 0){
-                final = 0;
-            }
-        }
-        
-        fResult.push(final);
-        final = 1;
-        results = {};
-        
+        outers = 0;
     }
     
-    for (var x = 0; x < fResult.length; x++){
-        console.log(fResult[x]);
+    for (var k = 0; k < fResults.length; k++){
+        console.log(fResults[k]);
     }
+    
 }
