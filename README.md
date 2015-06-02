@@ -1,2 +1,2 @@
 # Toy-Problems
-Toy Problems, algorithms, code games
+Toy Problems, Algorithms, and Code Games
